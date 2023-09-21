@@ -6,7 +6,7 @@ public class BasicMoveScript : MonoBehaviour
 {
     public Rigidbody2D body;
 
-    public Vector2 moveVector;
+    private Vector2 moveVector;
 
     public float speed = 8f;
 
@@ -14,60 +14,77 @@ public class BasicMoveScript : MonoBehaviour
 
     private bool isGround;
 
-    public float yRayDistance = 0.3f;
+    public float xRayDistance = 0.55f;
+
+    public float yRayDistance = 0.62f;
 
     public LayerMask ground;
 
-    private bool jumpPressed;
+    public LayerMask wall;
+
+    protected bool isWall;
+
+    private RaycastHit2D hit;
 
     // Start is called before the first frame update
     void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         body = GetComponent<Rigidbody2D>();
-        float test = Time.fixedDeltaTime;
     }
-
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        groundCheck();
-        jump();
-        walk();
-        fallAcceleration();
+        SurfaceCheck(Vector2.down, yRayDistance, out isGround, ground);
+        SurfaceCheck(Vector2.right, xRayDistance, out isWall, wall);
+        SurfaceCheck(Vector2.left, xRayDistance, out isWall, wall);
+        Walldrop();
+        Jump();
+        FallAcceleration();
+        if (!blockX)
+            Walk();
     }
 
-    void walk()
+    void Walk()
     {
         moveVector.x = Input.GetAxis("Horizontal");
         body.velocity = new Vector2(moveVector.x * speed, body.velocity.y);
     }
 
-    void jump()
+    private bool blockX;
+
+    void Walldrop()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || jumpPressed)
+        if (isWall && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
         {
-            jumpPressed = true;
-            if (isGround)
-            {
-                body.AddForce(Vector2.up * jumpForce);
-                jumpPressed = false;
-            }
+            blockX = true;
+        }
+        else
+        {
+            blockX = false;
         }
     }
 
-    void groundCheck()
+    void Jump()
     {
-        RaycastHit2D hit = Physics2D.Raycast(body.position, Vector2.down, yRayDistance, ground);
-        Vector2 rayEnd = body.position;
-        rayEnd.y -= yRayDistance;
-        Debug.DrawLine(body.position, rayEnd, Color.blue);
-        if (hit.collider != null)
-            isGround = true;
-        else
-            isGround = false;
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (isGround)
+                body.AddForce(Vector2.up * jumpForce);
     }
 
-    void fallAcceleration()
+    void SurfaceCheck(Vector2 direction, float rayDistance, out bool isSurface, LayerMask surface)
+    {
+        hit = Physics2D.Raycast(body.position, direction, rayDistance, surface);
+        Ray2D ray = new Ray2D(body.position, direction);
+        Debug.DrawLine(body.position, ray.GetPoint(rayDistance), Color.blue);
+        if (hit.collider != null)
+            isSurface = true;
+        else
+            isSurface = false;
+    }
+
+    void FallAcceleration()
     {
         if (!isGround)
             Physics2D.gravity = Vector2.Lerp(Physics2D.gravity, new Vector2(0, -90f), Time.deltaTime);
