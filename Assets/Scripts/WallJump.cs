@@ -5,27 +5,35 @@ using UnityEngine;
 public class WalljumpMove : BasicMoveScript
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        body = GetComponent<Rigidbody2D>();
-    }
+    //void Start()
+    //{
+    //    QualitySettings.vSyncCount = 0;
+    //    Application.targetFrameRate = 60;
+    //    body = GetComponent<Rigidbody2D>();
+    //}
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        SurfaceCheck(Vector2.down, yRayDistance, out isGround, ground);
+        SurfaceCheck(Vector2.right, xRayDistance, out isWall, wall);
+        SurfaceCheck(Vector2.left, xRayDistance, out isWall, wall);
+        Jump();
+        Walljump();
+        FallAcceleration(true);
+        if (!blockX)
+            Walk();
     }
 
-    void walljump()
+    void Walljump()
     {
-        if (isWall)
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (isWall && !isGround)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Physics2D.gravity = new Vector2(0, -4.905f);
-                if (Input.GetKeyDown(KeyCode.Space))
-                    body.AddForce(Vector2.up * (float)(jumpForce / 1.5));
+                body.AddForce(Vector2.right * jumpForce);
+                blockX = true;
             }
-            else
-                Physics2D.gravity = new Vector2(0, -9.81f);
+        else
+            blockX = false;
     }
 }
