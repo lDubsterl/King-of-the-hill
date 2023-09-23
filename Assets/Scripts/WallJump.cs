@@ -4,36 +4,40 @@ using UnityEngine;
 
 public class WalljumpMove : BasicMoveScript
 {
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    QualitySettings.vSyncCount = 0;
-    //    Application.targetFrameRate = 60;
-    //    body = GetComponent<Rigidbody2D>();
-    //}
-
-    // Update is called once per frame
     void FixedUpdate()
     {
-        SurfaceCheck(Vector2.down, yRayDistance, out isGround, ground);
-        SurfaceCheck(Vector2.right, xRayDistance, out isWall, wall);
-        SurfaceCheck(Vector2.left, xRayDistance, out isWall, wall);
-        Jump();
+        SurfaceCheck(Vector2.down, col.bounds.extents.y + 0.1f, out isGround, ground);
+        SurfaceCheck(Vector2.right, col.bounds.extents.x + 0.1f, out isWall, wall);
+        SurfaceCheck(Vector2.left, col.bounds.extents.x + 0.1f, out isWall, wall);
         Walljump();
+        Jump();
         FallAcceleration(true);
-        if (!blockX)
-            Walk();
+        Walk();
     }
 
+    public float blockDuration = 0.5f;
+
+    private float blockTime = 0;
     void Walljump()
     {
-        if (isWall && !isGround)
-            if (Input.GetKeyDown(KeyCode.Space))
+
+        if (isWall)
+        {
+            SurfaceCheck(Vector2.down, col.bounds.extents.y + 0.5f, out isGround, ground);
+            if (!isGround)
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    body.velocity = new Vector2(Mathf.Cos(Mathf.PI / 3), Mathf.Sin(Mathf.PI / 6));
+                    body.AddForce(new Vector2(2 * Mathf.Cos(Mathf.PI / 3), 2 * Mathf.Sin(Mathf.PI / 6)) * jumpForce);
+                    blockX = true;
+                }
+            SurfaceCheck(Vector2.down, col.bounds.extents.y + 0.1f, out isGround, ground);
+        }
+        if (blockX && (blockTime += Time.deltaTime) >= blockDuration)
+            if (isWall || isGround || Input.GetAxisRaw("Horizontal") != 0)
             {
-                body.AddForce(Vector2.right * jumpForce);
-                blockX = true;
+                blockX = false;
+                blockTime = 0;
             }
-        else
-            blockX = false;
     }
 }
