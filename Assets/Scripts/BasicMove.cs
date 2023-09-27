@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicMoveScript : MonoBehaviour
 {
-	public Rigidbody2D body;
+	protected Rigidbody2D body;
 
 	protected Collider2D col;
 
@@ -32,21 +32,18 @@ public class BasicMoveScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		col = GetComponent<Collider2D>();
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
+		col = GetComponent<Collider2D>();
 		body = GetComponent<Rigidbody2D>();
 		gravityScale = body.gravityScale;
 		gravityScaleLimit = gravityScale * 200;
 		slideGravity = gravityScale / 2;
-		maxAllowedDelay = Time.deltaTime * 4;
 	}
 	// Update is called once per frame
 	void FixedUpdate()
 	{
 		SurfaceCheck(Vector2.down, col.bounds.extents.y + 0.1f, out isGround, ground);
-		SurfaceCheck(Vector2.right, col.bounds.extents.x + 0.1f, out isWall, wall);
-		SurfaceCheck(Vector2.left, col.bounds.extents.x + 0.1f, out isWall, wall);
 		Walldrop();
 		Jump();
 		FallAcceleration(false);
@@ -63,7 +60,6 @@ public class BasicMoveScript : MonoBehaviour
 	}
 
 	protected bool blockX;
-
 	void Walldrop()
 	{
 		if (isWall && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
@@ -75,46 +71,44 @@ public class BasicMoveScript : MonoBehaviour
 			blockX = false;
 		}
 	}
-	private float jumpDelay = 0;
-	private bool startTimer;
-	private float maxAllowedDelay;
+
+	private bool jumpControl;
+	private float jumpIteration = 0;
+	public float jumpIterationLimit = 15;
+
 	protected void Jump()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+		if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			if (isGround)
-			{
-				body.AddForce(Vector2.up * jumpForce);
-				//startTimer = false;
-			}
-			//else
-			//	startTimer = true;
+				jumpControl = true;
 		}
-		//if (startTimer && (jumpDelay +=Time.deltaTime) >= maxAllowedDelay && isGround)
-		//{ 
-		//	body.AddForce(Vector2.up * jumpForce);
-		//	jumpDelay = 0;
-		//	startTimer = false;
-		//}
+		else
+			jumpControl = false;
+		if (jumpControl && (jumpIteration++ < jumpIterationLimit))
+		{
+			body.AddForce(Vector2.up, ForceMode2D.Impulse);
+		}
+		else
+		{
+			jumpIteration = 0;
+			jumpControl = false;
+		}
 	}
-
 	protected void SurfaceCheck(Vector2 direction, float rayDistance, out bool isSurface, LayerMask surface)
 	{
 		hit = Physics2D.Raycast(body.transform.position, direction, rayDistance, surface);
-		Ray2D ray = new Ray2D(body.transform.position, direction);
+		Ray2D ray = new(body.transform.position, direction);
 		Debug.DrawLine(body.transform.position, ray.GetPoint(rayDistance), Color.blue);
 		if (hit.collider != null)
 			isSurface = true;
 		else
 			isSurface = false;
 	}
-
-	public float yVelocity;
 	protected void FallAcceleration(bool WallSlide)
 	{
-		yVelocity = body.velocity.y;
-		if (WallSlide && isWall && body.velocity.y < 0 && Input.GetKey(KeyCode.LeftArrow))
-			body.velocity = new Vector2(body.velocity.y, Physics2D.gravity.y / 3);
+		if (WallSlide && isWall && body.velocity.y < 0 && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+			body.velocity = new Vector2(body.velocity.x, Physics2D.gravity.y / 3);
 		else
 			body.gravityScale = !isGround ? Mathf.Lerp(gravityScale, gravityScaleLimit, Time.deltaTime) : gravityScale;
 	}
