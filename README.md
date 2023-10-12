@@ -6,7 +6,7 @@
 1. [Введение](#intro)  
 1.1 [Назначение](#appointment)  
 1.2 [Аналоги](#analogues)  
-1.3.1 [Move or die](#move_or_die)  
+1.2.1 [Move or die](#move_or_die)  
 2. [Требования пользователя](#user_requirements)  
 2.1 [Программные интерфейсы](#software_interfaces)  
 2.2 [Интерфейс пользователя](#user_interface)  
@@ -22,8 +22,8 @@
 3.2 [Нефункциональные требования](#non-functional_requirements)  
 3.2.1 [Атрибуты качества](#quality_attributes)  
 3.2.1.1 [Требования к удобству использования](#requirements_for_ease_of_use)  
-3.2.1.2 [Требования к производительности](#performance_requirements)  
-3.2.2 [Ограничения](#restrictions)  
+3.2.2 [Требования к производительности](#performance_requirements)  
+3.2.3 [Ограничения](#restrictions)  
 
 <a name="intro"/>
 
@@ -40,7 +40,7 @@
 
 <a name="move_or_die"/>
 
-### 1.3.1 Move or die
+### 1.2.1 Move or die
 
 **Русский интерфейс:** есть  
 **Цена:** 10$  
@@ -138,10 +138,10 @@ Move or die - платформер, рассчитанный на прохожд
 
 <a name="#performance_requirements"/>
 
-### 3.2.1.2 Требования к производительности
+### 3.2.2 Требования к производительности
 Игра запустится и будет работать при наличии процессора с тактовой частотой от 1.6Ггц, 1Gb RAM и видеокартой с памятью от 1Gb
 
 <a name="restrictions"/>
 
-### 3.2.2 Ограничения
+### 3.2.3 Ограничения
 1. Приложение реализовано на платформе .NET Framework 4.6.1;
