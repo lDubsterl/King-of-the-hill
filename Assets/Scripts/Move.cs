@@ -44,32 +44,30 @@ public class Move : PlayerStats
 	// Update is called once per frame
 
 	Vector2 leftSide, rightSide;
+	private float rayDistance = 0.01f;
 	void FixedUpdate()
 	{
-		leftSide = new Vector2(col.bounds.center.x - col.bounds.extents.x + 0.001f, col.bounds.center.y);
-		rightSide = new Vector2(col.bounds.center.x + col.bounds.extents.x - 0.001f, col.bounds.center.y);
+		leftSide = new Vector2(col.bounds.center.x - col.bounds.extents.x + 0.01f, col.bounds.center.y);
+		rightSide = new Vector2(col.bounds.center.x + col.bounds.extents.x - 0.01f, col.bounds.center.y);
 		if (!isWalljumpEnabled)
 		{
-			isGround = SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + 0.1f, out isGround, ground); /*||
-			SurfaceCheck(Vector2.down, leftSide, col.bounds.extents.y + 0.1f, out isGround, ground) ||
-			SurfaceCheck(Vector2.down, rightSide, col.bounds.extents.y + 0.1f, out isGround, ground);*/
+			SurfaceCheck(Vector2.right, leftSide, col.bounds.size.x, out isGround, ground);
 			Walldrop();
 			FallAcceleration(false);
 		}
 		else
 		{
-			isGround = SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + 0.1f, out isGround, ground); /*||
-			SurfaceCheck(Vector2.down, leftSide, col.bounds.extents.y + 0.1f, out isGround, ground) ||
-			SurfaceCheck(Vector2.down, rightSide, col.bounds.extents.y + 0.1f, out isGround, ground);*/
-			isWall = SurfaceCheck(Vector2.right, col.bounds.center, col.bounds.extents.x + 0.1f, out isWall, wall) ||
-			SurfaceCheck(Vector2.left, col.bounds.center, col.bounds.extents.x + 0.1f, out isWall, wall);
+			isGround = SurfaceCheck(Vector2.down, leftSide, col.bounds.extents.y + rayDistance, out isGround, ground) ||
+			SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + rayDistance, out isGround, ground) ||
+			SurfaceCheck(Vector2.down, rightSide, col.bounds.extents.y + rayDistance, out isGround, ground);
+			isWall = SurfaceCheck(Vector2.right, col.bounds.center, col.bounds.extents.x + 0.015f, out isWall, wall) ||
+			SurfaceCheck(Vector2.left, col.bounds.center, col.bounds.extents.x + 0.015f, out isLeftWall, wall);
 			Walljump();
 			FallAcceleration(true);
 		}
 		Jump();
 		Walk();
 	}
-
 	protected void Walk()
 	{
 		if (!blockX)
@@ -88,7 +86,12 @@ public class Move : PlayerStats
 		if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			if (isGround)
-				jumpControl = true;
+			{ 
+				if (body.velocity.y == 0)
+					jumpControl = true;
+				if (body.velocity.y < 0)
+					body.velocity = new Vector2(body.velocity.x, 0);
+			}
 		}
 		else
 			jumpControl = false;
@@ -156,7 +159,7 @@ public class Move : PlayerStats
 
 					blockX = true;
 				}
-			SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + 0.1f, out isGround, ground);
+			SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + rayDistance, out isGround, ground);
 		}
 		if (blockX && (blockTime += Time.deltaTime) >= blockDuration)
 			if (isWall || isGround || Input.GetAxisRaw("Horizontal") != 0)
