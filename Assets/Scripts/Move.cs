@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : PlayerStats
@@ -7,6 +5,8 @@ public class Move : PlayerStats
 	protected Rigidbody2D body;
 
 	protected Collider2D col;
+
+	private Animator anim;
 
 	private Vector2 moveVector;
 
@@ -22,7 +22,9 @@ public class Move : PlayerStats
 
 	public float blockDuration = 0.25f;
 
-	private bool isWall, isLeftWall, isRightWall;
+	private bool isWall, isLeftWall, isRightWall, temp;
+
+	private string animationName;
 
 	private float blockTime = 0;
 
@@ -35,20 +37,32 @@ public class Move : PlayerStats
 	{
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
-		col = GetComponent<Collider2D>();
+		col = GetComponent<PolygonCollider2D>();
 		body = GetComponent<Rigidbody2D>();
 		gravityScale = body.gravityScale;
 		gravityScaleLimit = gravityScale * 250;
 		jumpIteration = jumpIterationLimit;
+		anim = GetComponent<Animator>();
 	}
-	// Update is called once per frame
+
+	void Update()// Update is called once per frame
+	{
+		if (body.velocity.x > 0)
+			body.transform.eulerAngles = new Vector3(0, 180);
+		else
+			body.transform.eulerAngles = new Vector3(0, 0);
+		anim.SetFloat("YVelocity", body.velocity.y);
+		anim.SetFloat("XVelocity", Mathf.Abs(body.velocity.x));
+		if (isAnimationPaused)
+			ResumeAnimation();
+	}
 
 	Vector2 leftSide, rightSide;
-	private float rayDistance = 0.01f;
+	private float rayDistance = 0.04f;
 	void FixedUpdate()
 	{
-		leftSide = new Vector2(col.bounds.center.x - col.bounds.extents.x + 0.01f, col.bounds.center.y);
-		rightSide = new Vector2(col.bounds.center.x + col.bounds.extents.x - 0.01f, col.bounds.center.y);
+		leftSide = new Vector2(col.bounds.center.x - col.bounds.extents.x + 0.1f, col.bounds.center.y);
+		rightSide = new Vector2(col.bounds.center.x + col.bounds.extents.x - 0.1f, col.bounds.center.y);
 		if (!isWalljumpEnabled)
 		{
 			SurfaceCheck(Vector2.right, leftSide, col.bounds.size.x, out isGround, ground);
@@ -60,8 +74,8 @@ public class Move : PlayerStats
 			isGround = SurfaceCheck(Vector2.down, leftSide, col.bounds.extents.y + rayDistance, out isGround, ground) ||
 			SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + rayDistance, out isGround, ground) ||
 			SurfaceCheck(Vector2.down, rightSide, col.bounds.extents.y + rayDistance, out isGround, ground);
-			isWall = SurfaceCheck(Vector2.right, col.bounds.center, col.bounds.extents.x + 0.015f, out isWall, wall) ||
-			SurfaceCheck(Vector2.left, col.bounds.center, col.bounds.extents.x + 0.015f, out isLeftWall, wall);
+			isWall = SurfaceCheck(Vector2.right, col.bounds.center, col.bounds.extents.x + 0.04f, out isWall, wall) ||
+			SurfaceCheck(Vector2.left, col.bounds.center, col.bounds.extents.x + 0.04f, out isLeftWall, wall);
 			Walljump();
 			FallAcceleration(true);
 		}
@@ -86,7 +100,7 @@ public class Move : PlayerStats
 		if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			if (isGround)
-			{ 
+			{
 				if (body.velocity.y == 0)
 					jumpControl = true;
 				if (body.velocity.y < 0)
@@ -95,7 +109,7 @@ public class Move : PlayerStats
 		}
 		else
 			jumpControl = false;
-		if (jumpControl && (jumpIteration-=Time.deltaTime) >= 0)
+		if (jumpControl && (jumpIteration -= Time.deltaTime) >= 0)
 		{
 			body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
@@ -166,6 +180,29 @@ public class Move : PlayerStats
 			{
 				blockX = false;
 				blockTime = 0;
+			}
+	}
+	private bool isAnimationPaused;
+	void PauseAnimation(string name)
+	{
+		animationName = name;
+		anim.speed = 0;
+		isAnimationPaused = true;
+	}
+
+	void ResumeAnimation()
+	{
+		if (animationName.Equals("JumpUp"))
+			if (body.velocity.y <= 1)
+			{
+				anim.speed = 1;
+				isAnimationPaused = false;
+			}
+		if (animationName.Equals("JumpDown"))
+			if ((SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + rayDistance * 10, out temp, ground)))
+			{
+				anim.speed = 1;
+				isAnimationPaused = false;
 			}
 	}
 }
