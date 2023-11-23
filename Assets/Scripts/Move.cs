@@ -22,7 +22,7 @@ public class Move : PlayerStats
 
 	public float blockDuration = 0.25f;
 
-	private bool isWall, isLeftWall, isRightWall, temp;
+	public bool isWall, isLeftWall, isRightWall, temp;
 
 	private string animationName;
 
@@ -47,12 +47,14 @@ public class Move : PlayerStats
 
 	void Update()// Update is called once per frame
 	{
-		if (body.velocity.x > 0)
+		if (body.velocity.x > 0 || isLeftWall)
 			body.transform.eulerAngles = new Vector3(0, 180);
 		else
 			body.transform.eulerAngles = new Vector3(0, 0);
 		anim.SetFloat("YVelocity", body.velocity.y);
-		anim.SetFloat("XVelocity", Mathf.Abs(body.velocity.x));
+		anim.SetFloat("XVelocity", (float)System.Math.Round(Mathf.Abs(body.velocity.x), 3));
+		anim.SetBool("isWall", isWall);
+		anim.SetBool("isGround", isGround);
 		if (isAnimationPaused)
 			ResumeAnimation();
 	}
@@ -160,6 +162,10 @@ public class Move : PlayerStats
 			if (!isGround)
 				if (Input.GetKeyDown(KeyCode.Space))
 				{
+					if (animationName.Equals("WallSlide_false"))
+					{
+						anim.SetBool("isJumped", true);
+					}
 					if (isLeftWall)
 					{
 						body.velocity = new Vector2(Mathf.Cos(Mathf.PI / 3), Mathf.Sin(Mathf.PI / 6));
@@ -180,14 +186,18 @@ public class Move : PlayerStats
 			{
 				blockX = false;
 				blockTime = 0;
+				anim.SetBool("isJumped", false);
 			}
 	}
 	private bool isAnimationPaused;
-	void PauseAnimation(string name)
+	void GetAnimationName(string name)
 	{
 		animationName = name;
-		anim.speed = 0;
-		isAnimationPaused = true;
+		if (!name.Contains("_false"))
+		{
+			anim.speed = 0;
+			isAnimationPaused = true;
+		}
 	}
 
 	void ResumeAnimation()
@@ -199,7 +209,9 @@ public class Move : PlayerStats
 				isAnimationPaused = false;
 			}
 		if (animationName.Equals("JumpDown"))
-			if ((SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + rayDistance * 10, out temp, ground)))
+			if (SurfaceCheck(Vector2.down, leftSide, col.bounds.extents.y + rayDistance, out temp, ground) ||
+			SurfaceCheck(Vector2.down, col.bounds.center, col.bounds.extents.y + rayDistance, out temp, ground) ||
+			SurfaceCheck(Vector2.down, rightSide, col.bounds.extents.y + rayDistance, out temp, ground) || isWall)
 			{
 				anim.speed = 1;
 				isAnimationPaused = false;

@@ -45,7 +45,7 @@ public class BoostSpawner : NetworkBehaviour
 				if (colliders.Length == 0)
 				{
 					GameObject boo = Instantiate(boosts[_boost], spawners[_spawner].transform.position, Quaternion.identity);
-					NetworkServer.Spawn(boo);
+	 				NetworkServer.Spawn(boo);
 					_lastSpawn = spawners[_spawner].transform.position;
 					_isBoostExist = true;
 					_timer = _timeBtwSpawns;

@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 448692512, guid: 1bc83cabcf1c8a446b84e0c554d359b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,6 +177,10 @@ MonoBehaviour:
     m_Bits: 8
   isWalljumpEnabled: 1
   blockDuration: 0.25
+  isWall: 0
+  isLeftWall: 0
+  isRightWall: 0
+  temp: 0
   jumpIterationLimit: 0.2
 --- !u!95 &-8530592645677671279
 Animator:
