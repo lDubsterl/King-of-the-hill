@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpForce: 0.7
+  jumpForce: 1
   isGround: 0
   ground:
     serializedVersion: 2
