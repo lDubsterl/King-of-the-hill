@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MirrorBasics.AutoHostClient">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\AutoHostClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoostSpawner">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAGAgAAAgIEBAAAAAAAAAAAAACAAACAAAACA=</HashCode>
+      <FileName>Assets\Scripts\BoostSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraMovement">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CameraMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChangeLevel">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ChangeLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ChangeStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChangeStats">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwCCAIAAiAAAACAAAAAoAAAAEAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ChangeStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConnectToServer">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ConnectToServer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Death">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Death.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DestroyBoost">
+    <Position X="11.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DestroyBoost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MirrorBasics.Match">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACACAAAAAAAAAAAAAAAAJAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\MatchMaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MirrorBasics.MatchMaker">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAGAAAAEAIAAAAAAAAABAEEAACAAAABIAAAA=</HashCode>
+      <FileName>Assets\Scripts\MatchMaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Move">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgwQEAQAEiUAgwAAAAgAAYCAAQAAIUGAA4IEAIKABAA=</HashCode>
+      <FileName>Assets\Scripts\Move.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MirrorBasics.Player">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAACAAgEAA5CEAAABBAAAgKAgAEAABCEAAARgICcA=</HashCode>
+      <FileName>Assets\Scripts\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStats">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MirrorBasics.UILobby">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAJAgGAEAAmIAAAAEAQgCgBBBAAAQAACABIAAgA=</HashCode>
+      <FileName>Assets\Scripts\UILobby.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MirrorBasics.UIPlayer">
+    <Position X="13.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAJAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UIPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
