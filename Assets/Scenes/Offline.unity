@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5197993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5197994}
+  - component: {fileID: 5197995}
+  m_Layer: 0
+  m_Name: AutoConnect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5197994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197993}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 970.6399, y: 606.7708, z: -2.169884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5197995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522f87be85b27dd4c97829276a53897a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkManager: {fileID: 1778308319}
 --- !u!1 &161429208
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +219,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161429208}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -635,8 +680,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 5197995}
+        m_TargetAssemblyTypeName: MirrorBasics.AutoHostClient, Assembly-CSharp
         m_MethodName: JoinLocal
         m_Mode: 1
         m_Arguments:
@@ -768,7 +813,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778308315}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Mirror.NetworkManager, Mirror
         m_MethodName: StartHost
         m_Mode: 1
@@ -1032,9 +1077,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1778308317}
-  - component: {fileID: 1778308315}
   - component: {fileID: 1778308316}
   - component: {fileID: 1778308318}
+  - component: {fileID: 1778308319}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1042,48 +1087,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1778308315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778308314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  runInBackground: 1
-  autoStartServerBuild: 1
-  autoConnectClientBuild: 0
-  sendRate: 30
-  offlineScene: Assets/Scenes/Offline.unity
-  onlineScene: Assets/Scenes/Lobby.unity
-  transport: {fileID: 1778308316}
-  networkAddress: localhost
-  maxConnections: 64
-  disconnectInactiveConnections: 0
-  disconnectInactiveTimeout: 60
-  authenticator: {fileID: 0}
-  playerPrefab: {fileID: 1093037038611221156, guid: 7fd8f3a09752e1742bbeb3a1839991b4, type: 3}
-  autoCreatePlayer: 1
-  playerSpawnMethod: 0
-  spawnPrefabs: []
-  snapshotSettings:
-    bufferTimeMultiplier: 2
-    bufferLimit: 32
-    catchupNegativeThreshold: -1
-    catchupPositiveThreshold: 1
-    catchupSpeed: 0.019999999552965164
-    slowdownSpeed: 0.03999999910593033
-    driftEmaDuration: 1
-    dynamicAdjustment: 1
-    dynamicAdjustmentTolerance: 1
-    deliveryTimeEmaDuration: 2
-  connectionQualityInterval: 3
-  timeInterpolationGui: 0
 --- !u!114 &1778308316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,55 +1143,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09f5c8bf2f4747b7a9284ef5d9ce2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1945153255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1945153257}
-  - component: {fileID: 1945153258}
-  m_Layer: 0
-  m_Name: AutoConnect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1945153257
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945153255}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1945153258
+--- !u!114 &1778308319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945153255}
+  m_GameObject: {fileID: 1778308314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522f87be85b27dd4c97829276a53897a, type: 3}
+  m_Script: {fileID: 11500000, guid: a4c96e6dd99826849ab1431f94547141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 1778308315}
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  autoStartServerBuild: 1
+  autoConnectClientBuild: 0
+  sendRate: 60
+  offlineScene: Assets/Scenes/Offline.unity
+  onlineScene: Assets/Scenes/Lobby.unity
+  transport: {fileID: 1778308316}
+  networkAddress: localhost
+  maxConnections: 60
+  disconnectInactiveConnections: 0
+  disconnectInactiveTimeout: 60
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 2465759801938451739, guid: 9f25e7b54c772bf46a834b53713fae4b, type: 3}
+  autoCreatePlayer: 1
+  playerSpawnMethod: 0
+  spawnPrefabs:
+  - {fileID: 6009278155142423781, guid: bda1b56b2af2fbd4b98300f1667b0ef7, type: 3}
+  - {fileID: 342981993875238437, guid: 3ac6c5edc43a77043b117cccdaf32ffd, type: 3}
+  - {fileID: 1587227457499904904, guid: d23ead30bb297674986fc1eda7757fae, type: 3}
+  snapshotSettings:
+    bufferTimeMultiplier: 2
+    bufferLimit: 32
+    catchupNegativeThreshold: -1
+    catchupPositiveThreshold: 1
+    catchupSpeed: 0.019999999552965164
+    slowdownSpeed: 0.03999999910593033
+    driftEmaDuration: 1
+    dynamicAdjustment: 1
+    dynamicAdjustmentTolerance: 1
+    deliveryTimeEmaDuration: 2
+  connectionQualityInterval: 3
+  timeInterpolationGui: 0
+  showRoomGUI: 1
+  minPlayers: 2
+  roomPlayerPrefab: {fileID: -2919772807314508223, guid: 7fd8f3a09752e1742bbeb3a1839991b4, type: 3}
+  RoomScene: Assets/Scenes/Lobby.unity
+  GameplayScene: Assets/Scenes/Test Level.unity
+  _allPlayersReady: 0
+  roomSlots: []
+  clientIndex: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1682677229}
   - {fileID: 1778308317}
-  - {fileID: 1945153257}
+  - {fileID: 5197994}
