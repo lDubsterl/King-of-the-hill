@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectIsPlayer: 1
+  deathCanvas: {fileID: 3212101121469670700, guid: d09e13d9ba3fe874d8078cbab6100cc0, type: 3}
 --- !u!114 &959984440028111306
 MonoBehaviour:
   m_ObjectHideFlags: 0

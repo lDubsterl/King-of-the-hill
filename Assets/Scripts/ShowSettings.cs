@@ -12,4 +12,5 @@ public class ShowSettings : MonoBehaviour
         menuCanvas.enabled = false;
         myCanvas.enabled = true;
     }
+   
 }
