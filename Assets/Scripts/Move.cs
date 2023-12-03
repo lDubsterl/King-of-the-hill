@@ -47,7 +47,7 @@ public class Move : PlayerStats
 
 	void Update()// Update is called once per frame
 	{
-		if (!isLocalPlayer) return;
+		//if (!isLocalPlayer) return;
 		if (body.velocity.x > 0 || isLeftWall)
 			body.transform.eulerAngles = new Vector3(0, 180);
 		else
@@ -64,7 +64,7 @@ public class Move : PlayerStats
 	private float rayDistance = 0.04f;
 	void FixedUpdate()
 	{
-		if (!isLocalPlayer) return;
+		//if (!isLocalPlayer) return;
 		leftSide = new Vector2(col.bounds.center.x - col.bounds.extents.x + 0.1f, col.bounds.center.y);
 		rightSide = new Vector2(col.bounds.center.x + col.bounds.extents.x - 0.1f, col.bounds.center.y);
 		if (!isWalljumpEnabled)

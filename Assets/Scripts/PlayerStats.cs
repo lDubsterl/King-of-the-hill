@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-
-public abstract class PlayerStats : MonoBehaviour
+public abstract class PlayerStats : NetworkBehaviour
 {
 	public float speed = 8f;
 
