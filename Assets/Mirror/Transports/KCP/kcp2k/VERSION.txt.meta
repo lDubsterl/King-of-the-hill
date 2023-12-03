@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: ed3f2cf1bbf1b4d53a6f2c103d311f71
+<<<<<<< HEAD
 TextScriptImporter:
+=======
+DefaultImporter:
+>>>>>>> dev-2
   externalObjects: {}
   userData: 
   assetBundleName: 

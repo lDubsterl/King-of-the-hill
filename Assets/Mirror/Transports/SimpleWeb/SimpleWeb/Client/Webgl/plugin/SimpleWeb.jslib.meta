@@ -23,6 +23,14 @@ PluginImporter:
       settings:
         DefaultValueInitialized: true
   - first:
+<<<<<<< HEAD
+=======
+      Facebook: WebGL
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+>>>>>>> dev-2
       WebGL: WebGL
     second:
       enabled: 1

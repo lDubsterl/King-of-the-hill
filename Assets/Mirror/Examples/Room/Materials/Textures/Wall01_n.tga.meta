@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 guid: 1ef4aad253cf7e9488305da905643f09
 TextureImporter:
+<<<<<<< HEAD
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
@@ -8,6 +9,15 @@ TextureImporter:
     mipMapMode: 0
     enableMipMap: 1
     sRGBTexture: 0
+=======
+  fileIDToRecycleName: {}
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+>>>>>>> dev-2
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -17,6 +27,7 @@ TextureImporter:
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
+<<<<<<< HEAD
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
@@ -26,10 +37,19 @@ TextureImporter:
   streamingMipmapsPriority: 0
   vTOnly: 0
   ignoreMipmapLimit: 0
+=======
+    externalNormalMap: 1
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+>>>>>>> dev-2
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
+<<<<<<< HEAD
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
@@ -40,6 +60,18 @@ TextureImporter:
     wrapU: 0
     wrapV: 0
     wrapW: 0
+=======
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+>>>>>>> dev-2
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -57,6 +89,7 @@ TextureImporter:
   textureType: 1
   textureShape: 1
   singleChannelComponent: 0
+<<<<<<< HEAD
   flipbookRows: 1
   flipbookColumns: 1
   maxTextureSizeSet: 0
@@ -70,6 +103,15 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+=======
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+>>>>>>> dev-2
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -77,6 +119,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -119,6 +162,9 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+    androidETC2FallbackOverride: 0
+>>>>>>> dev-2
   spriteSheet:
     serializedVersion: 2
     sprites: []
@@ -126,15 +172,24 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+<<<<<<< HEAD
     internalID: 0
+=======
+>>>>>>> dev-2
     vertices: []
     indices: 
     edges: []
     weights: []
+<<<<<<< HEAD
     secondaryTextures: []
     nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
+=======
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+>>>>>>> dev-2
   userData: 
   assetBundleName: 
   assetBundleVariant: 

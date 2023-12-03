@@ -3,7 +3,11 @@ guid: 9ffeeee1accdc4b4faf2b3e27b226340
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
+<<<<<<< HEAD
   serializedVersion: 12
+=======
+  serializedVersion: 11
+>>>>>>> dev-2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -20,12 +24,18 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+<<<<<<< HEAD
     flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
   ignoreMipmapLimit: 0
+=======
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+>>>>>>> dev-2
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -34,12 +44,21 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 0
     wrapV: 0
     wrapW: 0
+=======
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+>>>>>>> dev-2
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -57,6 +76,7 @@ TextureImporter:
   textureType: 0
   textureShape: 1
   singleChannelComponent: 0
+<<<<<<< HEAD
   flipbookRows: 1
   flipbookColumns: 1
   maxTextureSizeSet: 0
@@ -66,6 +86,12 @@ TextureImporter:
   applyGammaDecoding: 0
   swizzle: 50462976
   cookieLightType: 0
+=======
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+>>>>>>> dev-2
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -77,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -117,6 +144,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
+=======
+>>>>>>> dev-2
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -132,9 +161,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< HEAD
     nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
+=======
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+>>>>>>> dev-2
   userData: 
   assetBundleName: 
   assetBundleVariant: 

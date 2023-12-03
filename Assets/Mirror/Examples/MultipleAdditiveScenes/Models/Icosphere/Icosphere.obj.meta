@@ -1,11 +1,32 @@
 fileFormatVersion: 2
 guid: 1fe56a0e685b8434ebfeb53c69b59a5e
 ModelImporter:
+<<<<<<< HEAD
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
+=======
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Icosphere
+    100002: //RootNode
+    400000: Icosphere
+    400002: //RootNode
+    2100000: IcosphereMat
+    2300000: Icosphere
+    3300000: Icosphere
+    4300000: Icosphere
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ProBuilderDefault
+    second: {fileID: 2100000, guid: 883a7db7f994aab478a4380ad50eda70, type: 2}
+  materials:
+    importMaterials: 1
+>>>>>>> dev-2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -14,7 +35,10 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+<<<<<<< HEAD
     removeConstantScaleCurves: 0
+=======
+>>>>>>> dev-2
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -32,19 +56,27 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
+<<<<<<< HEAD
     isReadable: 0
+=======
+    isReadable: 1
+>>>>>>> dev-2
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+<<<<<<< HEAD
     sortHierarchyByName: 1
     importPhysicalCameras: 1
+=======
+>>>>>>> dev-2
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+<<<<<<< HEAD
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -59,16 +91,32 @@ ModelImporter:
     minBoneWeight: 0.001
     optimizeBones: 1
     meshOptimizationFlags: -1
+=======
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+>>>>>>> dev-2
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+<<<<<<< HEAD
     secondaryUVMarginMethod: 1
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
     strictVertexDataChecks: 0
+=======
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+>>>>>>> dev-2
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -77,10 +125,17 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+<<<<<<< HEAD
   referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
+=======
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+>>>>>>> dev-2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -90,12 +145,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+<<<<<<< HEAD
     globalScale: 1
+=======
+>>>>>>> dev-2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+<<<<<<< HEAD
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
@@ -103,6 +162,10 @@ ModelImporter:
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
+=======
+  animationType: 0
+  humanoidOversampling: 1
+>>>>>>> dev-2
   additionalBone: 0
   userData: 
   assetBundleName: 
