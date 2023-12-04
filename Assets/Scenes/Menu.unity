@@ -3235,7 +3235,7 @@ MonoBehaviour:
   offlineScene: Assets/Scenes/Menu.unity
   onlineScene: Assets/Scenes/Test Level.unity
   transport: {fileID: 1927825760}
-  networkAddress: localhost
+  networkAddress: 26.248.244.96
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
